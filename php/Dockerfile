@@ -5,7 +5,8 @@ RUN apk add --no-cache curl git build-base zlib-dev oniguruma-dev autoconf bash 
 
 RUN docker-php-ext-install pdo pdo_pgsql xml
 
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN pecl install xdebug redis && \
+    docker-php-ext-enable xdebug redis
 
 COPY ./php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 

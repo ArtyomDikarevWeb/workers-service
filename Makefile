@@ -46,13 +46,18 @@ up:
 down:
 	${DOCKER_COMPOSE} down
 
-restart: down up
+restart:
+	${DOCKER_COMPOSE} restart
+
+build_up: build up
+
+reup: down up
 
 exec/app_bash:
-	docker exec -it php /bin/bash
+	docker exec -it workers_php /bin/bash
 
 php/clear_cache:
-	${DOCKER_RUN} php bin/console cache:clear
+	${DOCKER_RUN} workers_php bin/console cache:clear
 
 php/clear_cache_test:
-	${DOCKER_RUN} php bin/console cache:clear --env=test
+	${DOCKER_RUN} workers_php bin/console cache:clear --env=test

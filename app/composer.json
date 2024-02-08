@@ -7,14 +7,21 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "nelmio/api-doc-bundle": "^4.19",
         "symfony/console": "7.0.*",
         "symfony/dotenv": "7.0.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "7.0.*",
+        "symfony/http-foundation": "7.0.*",
         "symfony/runtime": "7.0.*",
         "symfony/yaml": "7.0.*"
     },
     "require-dev": {
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^9.5",
+        "symfony/browser-kit": "7.0.*",
+        "symfony/css-selector": "7.0.*",
+        "symfony/phpunit-bridge": "^7.0"
     },
     "config": {
         "allow-plugins": {
