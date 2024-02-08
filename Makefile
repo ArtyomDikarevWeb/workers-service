@@ -46,6 +46,8 @@ up:
 down:
 	${DOCKER_COMPOSE} down
 
+restart: down up
+
 exec/app_bash:
 	docker exec -it php /bin/bash
 

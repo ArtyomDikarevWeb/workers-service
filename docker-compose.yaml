@@ -9,7 +9,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./app:/var/www/workers
-    container_name: nginx
+    container_name: workers_nginx
 
   php:
     build:
@@ -23,7 +23,7 @@ services:
       PHP_IDE_CONFIG: "serverName=${XDEBUG_SERVER_NAME}"
     volumes:
       - ./app:/var/www/workers
-    container_name: php
+    container_name: workers_php
 
   postgres:
     build:
@@ -38,13 +38,16 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - workers_db:/var/lib/postgresql/data:rw
-    container_name: postgres
+    container_name: workers_postgres
 
   adminer:
     image: adminer
     restart: always
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
     ports:
       - ${ADMINER_HOST_PORT}:8080
+    container_name: workers_adminer
 
   composer:
     build:
